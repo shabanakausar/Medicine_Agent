@@ -31,11 +31,11 @@ arxiv = ArxivQueryRun(api_wrapper=arxiv_wrapper)
 api_wrapper = WikipediaAPIWrapper(top_k_results=1, doc_content_chars_max=200)
 wiki = WikipediaQueryRun(api_wrapper=api_wrapper)
 
-# Create a DuckDuckGo tool for general web search
-search = DuckDuckGoSearchRun(name="Search")
-
 # Create a PubMed tool for searching medical literature
 pubmed = PubmedQueryRun()
+
+# Create a DuckDuckGo tool for general web search
+search = DuckDuckGoSearchRun(name="Search")
 
 # Creat e a custom tool for RxNorm API  
 class RxNormTool(BaseTool):
@@ -51,6 +51,9 @@ class RxNormTool(BaseTool):
             return rxcui or "No RxNorm ID found."
         except Exception as e:
             return f"API Error: {str(e)}"
+        
+    def _arun(self, query: str) -> str:
+        raise NotImplementedError("Async not implemented for RxNormTool.")
 
 rxnorm_tool = RxNormTool()
 
@@ -98,16 +101,17 @@ if prompt := st.chat_input(placeholder="What is Machine learning?"):
         model_name="Llama3-8b-8192",
         streaming=True
     )
+
     
     # A list of tools that the agent can use
-    tools = [wiki, pubmed, rxnorm_tool, search, arxiv]
+    tools = [wiki, pubmed, arxiv, search, rxnorm_tool ]
     # Create a Langchain agent with the ZERO_SHOT_REACT_DESCRIPTION strategy
     # The agent will attempt to parse the user's query and decide whether
     # to use the tools
     search_agent = initialize_agent(
         tools,
         llm,
-        agent=AgentType.CHAT_ZERO_SHOT_REACT_DESCRIPTION,
+        agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         handle_parsing_errors = True,
         verbose=True,
     )
