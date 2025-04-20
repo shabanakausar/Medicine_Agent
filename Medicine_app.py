@@ -2,7 +2,6 @@
 # Import necessary libraries
 # -----------------------------
 import streamlit as st  # Streamlit for building the web app
-from langchain_groq import ChatGroq  # Groq-based Chat LLM
 from langchain_community.utilities import ArxivAPIWrapper, WikipediaAPIWrapper  # Utilities to query Arxiv and Wikipedia
 from langchain_community.tools import ArxivQueryRun, WikipediaQueryRun, DuckDuckGoSearchRun  # Tools for each wrapper
 from langchain.agents import initialize_agent, AgentType  # Langchain for agent initialization
@@ -14,6 +13,7 @@ from langchain.tools import BaseTool
 from typing import Optional, Type
 from pydantic import BaseModel, Field
 import requests  
+from langchain_groq import ChatGroq  # Groq-based Chat LLM
 
 
 
