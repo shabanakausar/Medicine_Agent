@@ -1,7 +1,9 @@
 langchain
+langchain-groq
+langchain-core
+langchain-community
 python-dotenv
 ipykernel
-langchain-community
 pypdf
 bs4
 arxiv
@@ -17,16 +19,20 @@ langchain_chroma
 duckdb
 pandas
 openai
-langchain-groq
 duckduckgo_search==5.3.1b1
 pymupdf
 arxiv
 wikipedia
-mysql-connector-python
-SQLAlchemy
+xmltodict    # for medical
+requests
+typing
+pydantic
 validators==0.28.1
 youtube_transcript_api
 unstructured
 pytube
 numexpr
 huggingface_hub
+sqlalchemy
+pymysql  # Add to requirements.txt
+requests
