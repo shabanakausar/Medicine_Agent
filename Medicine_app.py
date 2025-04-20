@@ -100,7 +100,7 @@ if prompt := st.chat_input(placeholder="What is Machine learning?"):
     )
     
     # A list of tools that the agent can use
-    tools = [pubmed, rxnorm_tool, search, arxiv, wiki]
+    tools = [wiki, pubmed, rxnorm_tool, search, arxiv]
     # Create a Langchain agent with the ZERO_SHOT_REACT_DESCRIPTION strategy
     # The agent will attempt to parse the user's query and decide whether
     # to use the tools
