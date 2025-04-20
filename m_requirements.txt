@@ -1,7 +1,7 @@
 langchain
 langchain-groq
-langchain-core>=0.3.10,<0.4.0
-langchain-community==0.3.2
+langchain-core
+langchain-community
 python-dotenv
 ipykernel
 pypdf
