@@ -104,11 +104,12 @@ if prompt := st.chat_input(placeholder="Panadol"):
         handle_parsing_errors=True,
         verbose=True
     )
+#   Rephrase this medical query for better search accuracy. Make it concise, factual, User query: "{original_prompt}"
+#   and easy for a search tool to handle.
 
     def clarify_prompt(original_prompt, llm):
         clarification_prompt = f"""
         You are a helpful assistant that improves user prompts for better medical searches.
-
         Here is a user query: "{original_prompt}"
 
         Classify the intent into one of these categories:
