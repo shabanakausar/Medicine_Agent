@@ -33,10 +33,10 @@ pubmed = PubmedQueryRun(
     description="Best for academic and clinical research articles related to medicines."
 )
 
-search = DuckDuckGoSearchRun(
-    name="DuckDuckGo Web Search",
-    description="Useful for general web results and current information about drugs or diseases."
-)
+#search = DuckDuckGoSearchRun(
+#    name="DuckDuckGo Web Search",
+#    description="Useful for general web results and current information about drugs or diseases."
+#)
 
 class RxNormTool(BaseTool):
     name: str = "RxNorm Drug ID Lookup"
@@ -95,7 +95,7 @@ if prompt := st.chat_input(placeholder="Panadol"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
-    tools = [pubmed, rxnorm_tool, arxiv, search, wiki]
+    tools = [pubmed, rxnorm_tool, arxiv, wiki]
 
     search_agent = initialize_agent(
         tools,
